@@ -8,27 +8,32 @@ https://codesandbox.io/s/p83q70qpm
 
 API
 -------------
-Show a confirm:
+### Alert:
+```javascript
+await this.$store.dispatch('dialog/ALERT', {
+    props: { ... }
+})
+```
+
+
+### Confirm:
 ```javascript
 const didConfirm = await this.$store.dispatch('dialog/CONFIRM', {
     props: { ... }
 })
 console.log(didConfirm) // true | false
 ```
-Show a prompt:
+
+
+### Prompt 
 ```javascript
 const formData = await this.$store.dispatch('dialog/PROMPT', {
     props: { ... }
 })
 console.log(formData) // { 'name-attr-of-input': value, ... } | null
 ```
-Show an alert:
-```javascript
-await this.$store.dispatch('dialog/ALERT', {
-    props: { ... }
-})
-```
-Show a prompt with async validation (this will set loading: true on the button):
+
+### Prompt w/ async validation (will pass loading=true to the button):
 ```javascript
 const asyncResult = await this.$store.dispatch('dialog/PROMPT', {
   props: {
@@ -48,7 +53,7 @@ const asyncResult = await this.$store.dispatch('dialog/PROMPT', {
 })
 console.log(asyncResult) // Something | null
 ```
-Hide any existing dialogs (equivalent of pressing cancel):
+### Hide (equivalent of pressing cancel)
 ```javascript
 await this.$store.dispatch('dialog/HIDE')
 ```
