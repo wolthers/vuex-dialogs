@@ -5,22 +5,29 @@ Vuex powered alert-, confirm- and prompt-dialogs with a promise based interface 
 
 API
 -------------
+Show a confirm:
 ```javascript
 const didConfirm = await this.$store.dispatch('dialog/CONFIRM', {
     props: { ... }
 })
 console.log(didConfirm) // true | false
 ```
+Show a prompt:
 ```javascript
 const formData = await this.$store.dispatch('dialog/PROMPT', {
     props: { ... }
 })
 console.log(formData) // { 'input-name-1': value, ... } | null
 ```
+Show an alert:
 ```javascript
 await this.$store.dispatch('dialog/ALERT', {
     props: { ... }
 })
+```
+Hide any existing dialogs (equivalent of pressing cancel):
+```javascript
+await this.$store.dispatch('dialog/HIDE')
 ```
 
 Installation
@@ -50,7 +57,7 @@ new Vuex.Store({
   <div>
     <h2>{{heading}}</h2>
     <p>{{body}}</p>
-    <input v-if="type === 'prompt'" required name="name-attr-of-input" />
+    <input v-if="type === 'prompt'" required name="input-name-1" />
   </div>
 </template>
 
