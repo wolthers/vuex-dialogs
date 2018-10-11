@@ -20,6 +20,14 @@
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.5.17"
   },
+  "files": [
+    "dist/vuex-dialogs.common.js",
+    "dist/vuex-dialogs.common.js.map",
+    "dist/vuex-dialogs.umd.js",
+    "dist/vuex-dialogs.umd.js.map",
+    "dist/vuex-dialogs.umd.min.js",
+    "dist/vuex-dialogs.umd.min.js.map"
+  ],
   "main": "dist/vuex-dialogs.common.js",
   "eslintConfig": {
     "root": true,
