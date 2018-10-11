@@ -50,7 +50,7 @@ new Vuex.Store({
   ...
 })
 ```
-1. Create a component that will be used as the inner content.
+3. Create a component that will be used as the inner content.
 ```html
 // MyDialogContent.vue
 <template>
