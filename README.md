@@ -2,6 +2,9 @@ vuex-dialogs
 ====
 Vuex powered alert-, confirm- and prompt-dialogs with a promise based interface similar to their respective DOM apis.
 
+DEMO
+-------------
+https://codesandbox.io/s/p83q70qpm
 
 API
 -------------
@@ -17,7 +20,7 @@ Show a prompt:
 const formData = await this.$store.dispatch('dialog/PROMPT', {
     props: { ... }
 })
-console.log(formData) // { 'input-name-1': value, ... } | null
+console.log(formData) // { 'name-attr-of-input': value, ... } | null
 ```
 Show an alert:
 ```javascript
@@ -25,32 +28,29 @@ await this.$store.dispatch('dialog/ALERT', {
     props: { ... }
 })
 ```
-Hide any existing dialogs (equivalent of pressing cancel):
-```javascript
-await this.$store.dispatch('dialog/HIDE')
-```
 Show a prompt with async validation (this will set loading: true on the button):
 ```javascript
-const asyncResult = store.dispatch('dialog/PROMPT', {
+const asyncResult = await this.$store.dispatch('dialog/PROMPT', {
   props: {
     ...
     asyncValidator: async formData => {
-      const input = formData['input-name-1']
+      const input = formData['name-attr-of-input']
 
       try {
         const asyncResult = await fetchSomethingAsync(input)
-        
-        store.dispatch('dialog/HIDE', asyncResult)
+        this.$store.dispatch('dialog/HIDE', asyncResult)
       } catch (error) {
         // Handle error
-        ...
-
-        store.dispatch('dialog/HIDE')
+        this.$store.dispatch('dialog/HIDE')
       }
     }
   }
 })
 console.log(asyncResult) // Something | null
+```
+Hide any existing dialogs (equivalent of pressing cancel):
+```javascript
+await this.$store.dispatch('dialog/HIDE')
 ```
 
 Installation
@@ -80,7 +80,7 @@ new Vuex.Store({
   <div>
     <h2>{{heading}}</h2>
     <p>{{body}}</p>
-    <input v-if="type === 'prompt'" required name="input-name-1" />
+    <input v-if="type === 'prompt'" required name="name-attr-of-input" />
   </div>
 </template>
 
