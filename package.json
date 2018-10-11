@@ -1,10 +1,9 @@
 {
   "name": "vuex-dialogs",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
   "scripts": {
     "serve": "vue-cli-service serve 'src/demo/main.js'",
-    "build-lib": "npm run build && vue-cli-service build --target lib --name 'vuex-dialogs' 'src/library/index.js' --no-clean",
+    "build-lib": "vue-cli-service build --target lib --name 'vuex-dialogs' 'src/library/index.js'",
     "build": "vue-cli-service build 'src/demo/main.js'",
     "lint": "vue-cli-service lint"
   },
@@ -42,8 +41,8 @@
     }
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie > 0"
+    "last 1 version",
+    "not dead",
+    "> 1%"
   ]
 }
