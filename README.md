@@ -34,12 +34,12 @@ Installation
 -------------
 The library consists of two parts. A wrapping Dialog component and a vuex module. You create the inner content and button components yourself to allow maximum customizability.
 
-1. Install the library
+**1. Install the library**
 ```bash
 $ npm install --save vuex-dialogs
 ```
 
-2. Add the module to your vuex store
+**2. Add the module to your vuex store**
 ```javascript
 import { module as dialog } from 'vuex-dialogs'
 
@@ -50,7 +50,7 @@ new Vuex.Store({
   ...
 })
 ```
-3. Create a component that will be used as the inner content.
+**3. Create a component that will be used as the inner content.**
 ```html
 // MyDialogContent.vue
 <template>
@@ -71,7 +71,7 @@ export default {
 }
 </script>
 ```
-4. Create or pass an existing button component that adheres to the following interface:
+**4. Create or pass an existing button component that adheres to the following interface:**
 ```html
 // MyButton.vue
 <template>
@@ -90,7 +90,7 @@ export default {
 </script>
 ```
 
-5. Add the wrapping component to your app 
+**5. Add the wrapping component to your app**
 <!-- -->
 ```html
 // App.vue
