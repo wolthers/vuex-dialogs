@@ -1,6 +1,6 @@
 {
   "name": "vuex-dialogs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "serve": "vue-cli-service serve 'src/demo/main.js'",
     "build-lib": "vue-cli-service build --target lib --name 'vuex-dialogs' 'src/library/index.js'",
@@ -26,7 +26,8 @@
     "dist/vuex-dialogs.umd.js",
     "dist/vuex-dialogs.umd.js.map",
     "dist/vuex-dialogs.umd.min.js",
-    "dist/vuex-dialogs.umd.min.js.map"
+    "dist/vuex-dialogs.umd.min.js.map",
+    "dist/vuex-dialogs.css"
   ],
   "main": "dist/vuex-dialogs.common.js",
   "eslintConfig": {
