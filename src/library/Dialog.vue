@@ -134,10 +134,10 @@ export default {
       }
 
       // Only close if customValidationOnSubmit isn't set
-      if (typeof this.componentProps.customValidator === "function") {
+      if (typeof this.componentProps.asyncValidator === "function") {
         this.validating = true;
         this.componentProps
-          .customValidator(payload)
+          .asyncValidator(payload)
           .then(() => (this.validating = false))
           .catch(() => (this.validating = false));
       } else {
