@@ -2,7 +2,7 @@ vuex-dialogs
 ====
 Vuex powered alert-, confirm- and prompt-dialogs with a promise based interface similar to their respective DOM apis.
 
-DEMO
+Demo
 -------------
 https://codesandbox.io/s/p83q70qpm
 
