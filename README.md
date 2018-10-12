@@ -4,7 +4,7 @@ Vuex powered alert-, confirm- and prompt-dialogs with a promise based interface 
 
 Demo
 -------------
-Demo: <a href="https://p83q70qpm.codesandbox.io/" target="_blank">https://p83q70qpm.codesandbox.io/</a> <br>
+Demo: <a href="https://p83q70qpm.codesandbox.io" target="_blank">https://p83q70qpm.codesandbox.io</a> <br>
 Demo source: <a href="https://codesandbox.io/s/p83q70qpm" target="_blank">https://codesandbox.io/s/p83q70qpm</a>
 
 API
