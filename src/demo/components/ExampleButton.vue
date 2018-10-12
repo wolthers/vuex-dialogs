@@ -32,7 +32,7 @@ export default {
   font-family: inherit;
   font-size: 1.125em;
   color: #fff;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   background-color: #364042;
   cursor: pointer;
 
@@ -55,7 +55,8 @@ export default {
     color: rgba(#364042, 0.25);
   }
   &[disabled],
-  form[disabled] & {
+  form[disabled] &,
+  fieldset[disabled] & {
     opacity: 0.25;
     cursor: not-allowed;
   }

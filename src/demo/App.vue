@@ -10,7 +10,8 @@
     </Dialog>
     <ExampleButton @click.native="handleShowAlertClick">dispatch('dialog/ALERT', ...) <small v-if="alertResolved !== null">Resolved value: undefined</small></ExampleButton><br>
     <ExampleButton @click.native="handleShowConfirmClick">dispatch('dialog/CONFIRM', ...) <small v-if="confirmResult !== null">Resolved value: {{ confirmResult}}</small></ExampleButton><br>
-    <ExampleButton @click.native="handleShowPromptClick">dispatch('dialog/PROMPT', ...) <small v-if="promptResult !== null">Resolved value: {{ promptResult}}</small></ExampleButton>
+    <ExampleButton @click.native="handleShowPromptClick">dispatch('dialog/PROMPT', ...) <small v-if="promptResult !== null">Resolved value: {{ promptResult}}</small></ExampleButton><br>
+    <ExampleButton @click.native="handleShowPromptWithValidationClick">dispatch('dialog/PROMPT', ...) <small v-if="asyncPromptResult !== null">Resolved value: {{ asyncPromptResult}}</small></ExampleButton>
   </div>
 </template>
 
@@ -26,7 +27,8 @@ export default {
       ExampleButton,
       promptResult: null,
       confirmResult: null,
-      alertResolved: null
+      alertResolved: null,
+      asyncPromptResult: null
     };
   },
   components: {
@@ -67,9 +69,41 @@ export default {
       });
       this.promptResult = JSON.stringify(prompt);
       console.log("Prompt closed with result", this.promptResult); // eslint-disable-line
+    },
+
+    async handleShowPromptWithValidationClick() {
+      const asyncResult = await this.$store.dispatch("dialog/PROMPT", {
+        props: {
+          heading: "Heading",
+          body:
+            "Incididunt veniam exercitation aliquip officia duis consequat.",
+          placeholder: "Example placeholder...",
+          asyncValidator: async formData => {
+            const input = formData["name-attr-of-input"];
+
+            try {
+              const asyncResult = await fetchSomethingAsync(input);
+              this.$store.dispatch("dialog/HIDE", asyncResult);
+            } catch (error) {
+              // Handle error
+              this.$store.dispatch("dialog/HIDE");
+            }
+          }
+        }
+      });
+      console.log(asyncResult); // eslint-disable-line
+      this.asyncPromptResult = asyncResult === null ? "null" : asyncResult;
     }
   }
 };
+
+async function fetchSomethingAsync(input) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve("Something. Input was: " + input);
+    }, 1000);
+  });
+}
 </script>
 
 <style>
