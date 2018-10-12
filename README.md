@@ -8,7 +8,7 @@ https://codesandbox.io/s/p83q70qpm
 
 API
 -------------
-### Alert:
+#### Alert:
 ```javascript
 await this.$store.dispatch('dialog/ALERT', {
     props: { ... }
@@ -16,7 +16,7 @@ await this.$store.dispatch('dialog/ALERT', {
 ```
 
 
-### Confirm:
+#### Confirm:
 ```javascript
 const didConfirm = await this.$store.dispatch('dialog/CONFIRM', {
     props: { ... }
@@ -25,7 +25,7 @@ console.log(didConfirm) // true | false
 ```
 
 
-### Prompt 
+#### Prompt 
 ```javascript
 const formData = await this.$store.dispatch('dialog/PROMPT', {
     props: { ... }
@@ -33,7 +33,7 @@ const formData = await this.$store.dispatch('dialog/PROMPT', {
 console.log(formData) // { 'name-attr-of-input': value, ... } | null
 ```
 
-### Prompt w/ async validation (will pass loading=true to the button):
+#### Prompt w/ async validation (will pass loading=true to the button):
 ```javascript
 const asyncResult = await this.$store.dispatch('dialog/PROMPT', {
   props: {
@@ -53,7 +53,7 @@ const asyncResult = await this.$store.dispatch('dialog/PROMPT', {
 })
 console.log(asyncResult) // Something | null
 ```
-### Hide (equivalent of pressing cancel)
+#### Hide programatically - for instance on $route change
 ```javascript
 await this.$store.dispatch('dialog/HIDE')
 ```
