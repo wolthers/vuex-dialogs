@@ -124,12 +124,19 @@ export default {
 // App.vue
 <template>
   <main id="app">
-    <Dialog :button="MyButton" :alert="MyDialogContent" :confirm="MyDialogContent" :prompt="MyDialogContent" />
+    <Dialog 
+      class="app__dialog" 
+      :button="MyButton" 
+      :alert="MyDialogContent" 
+      :confirm="MyDialogContent" 
+      :prompt="MyDialogContent" 
+    />
   </main>
 </template>
 
 <script>
   import { Dialog } from 'vuex-dialogs'
+  import dialogStyles from '../node_modules/vuex-dialogs/dist/vuex-dialogs.css'
   import MyButton from './path/to/MyButton'
   import MyDialogContent from './path/to/MyDialogContent'
 
@@ -142,4 +149,35 @@ export default {
     }
   }
 </script>
+<style>
+.app__dialog {
+  font-size: 16px;
+
+  /* Defaults: */
+  --vuex-dialogs-border-radius: 6px;
+  --vuex-dialogs-min-width: 280px;
+  --vuex-dialogs-max-width: 340px;
+  --vuex-dialogs-margin: 20px;
+  --vuex-dialogs-box-shadow: 0 1px 0 hsla(0, 0%, 100%, 0.05),
+                             0 -1px 0 hsla(0, 0%, 100%, 0.05), 
+                             1px 0 0 hsla(0, 0%, 100%, 0.05),
+                             -1px 0 0 hsla(0, 0%, 100%, 0.05), 
+                             0 0 25px hsla(0, 0%, 0%, 0.15);
+  --vuex-dialogs-background-content: #f1f1f1;
+  --vuex-dialogs-background-buttons: transparent;
+  --vuex-dialogs-background-buttons-separator: hsla(0, 0%, 100%, 0.025);
+  --vuex-dialogs-background-backdrop: hsla(193, 9%, 14%, 0.85);
+  --vuex-dialogs-transform-enter: scale(1.25);
+  --vuex-dialogs-transition-duration-leave: 250ms;
+  --vuex-dialogs-transition-duration-enter: 400ms;
+  --vuex-dialogs-transition-timing-function-enter: cubic-bezier(0.075, 0.82, 0.165, 1);
+  
+}
+</style>
+
 ```
+
+
+Browser support
+-------------
+Works in all evergreen browsers and IE11, the only difference that the wrapping dialog will not be themeable with CSS custom properties.
