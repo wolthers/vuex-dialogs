@@ -1,6 +1,6 @@
 {
   "name": "vuex-dialogs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "serve": "vue-cli-service serve 'src/demo/main.js'",
     "build-lib": "vue-cli-service build --target lib --name 'vuex-dialogs' 'src/library/index.js'",
