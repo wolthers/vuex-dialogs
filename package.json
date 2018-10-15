@@ -30,6 +30,10 @@
     "dist/vuex-dialogs.css"
   ],
   "main": "dist/vuex-dialogs.common.js",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/wolthers/vuex-dialogs.git"
+  },
   "eslintConfig": {
     "root": true,
     "env": {
