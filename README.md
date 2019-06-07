@@ -34,29 +34,37 @@ const formData = await this.$store.dispatch('dialog/PROMPT', {
 console.log(formData) // { 'name-attr-of-input': value, ... } | null
 ```
 
-#### Prompt w/ async validation (will pass loading=true to the button):
+#### Prompt with validation
+Sometimes you want to validate the given input before closing a prompt. To do so, you can define an asyncValidator(formValues), which receives an object with name-of-input/value-of-input pairs for the inputs in the form. `loading="true"` will automatically be set on the ok button until the promise has resolved:
 ```javascript
 const asyncResult = await this.$store.dispatch('dialog/PROMPT', {
   props: {
-    ...
-    asyncValidator: async formData => {
-      const input = formData['name-attr-of-input']
+    asyncValidator: async formValues => {
+      const value = formValues['name-attr-of-input'] // "Something"
+      const didValidate = await validateValueServerSide(value)
 
-      try {
-        const asyncResult = await fetchSomethingAsync(input)
-        this.$store.dispatch('dialog/HIDE', asyncResult)
-      } catch (error) {
-        // Handle error
-        this.$store.dispatch('dialog/HIDE')
+      if (didValidate) {
+        // Close and pass the result to the outer promise
+        this.$store.dispatch('dialog/HIDE', didValidate)
+      } else {
+        // Inform the user that the given input did not validate
       }
-    }
+    },
+    ...
   }
 })
-console.log(asyncResult) // Something | null
+console.log(asyncResult) // "Something"
 ```
 #### Hide programatically - for instance on $route change
 ```javascript
-await this.$store.dispatch('dialog/HIDE')
+{
+  watch: {
+    $route() {
+      this.$store.dispatch('dialog/HIDE')
+    }
+  },
+  ...
+}
 ```
 
 Installation
